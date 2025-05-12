@@ -13,3 +13,4 @@ Route::get('/login', [SessionController::class, 'index']);
 Route::post('/login', [SessionController::class, 'login']);
 
 Route::get('/register', [RegisterController::class, 'index']);
+Route::post('/register', [RegisterController::class, 'store']);
