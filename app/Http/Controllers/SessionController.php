@@ -28,4 +28,13 @@ class SessionController extends Controller
             'email' => 'El email o la contraseña son incorrectos.',
         ])->onlyInput('email');
     }
+
+    public function destroy(Request $request)
+    {
+        Auth::logout();
+        $request->session()->invalidate();
+        $request->session()->regenerateToken();
+
+        return redirect('/')->with('success', 'Sesión cerrada');
+    }
 }

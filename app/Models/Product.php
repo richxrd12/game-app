@@ -3,11 +3,17 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+
+use App\Models\ProductStatus;
+use App\Models\Category;
 
 class Product extends Model
 {
+    use HasFactory;
+
     protected $fillable = [
-        'images',
+        'image',
         'name',
         'description',
         'price',
@@ -15,4 +21,14 @@ class Product extends Model
         'discount',
         'category_id'
     ];
+
+    public function status()
+    {
+        return $this->belongsTo(ProductStatus::class, 'product_status_id');
+    }
+
+    public function category()
+    {
+        return $this->belongsTo(Category::class, 'category_id');
+    }
 }
