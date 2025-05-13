@@ -19,7 +19,8 @@ class Product extends Model
         'price',
         'is_discounted',
         'discount',
-        'category_id'
+        'category_id',
+        'order_id'
     ];
 
     public function status()
@@ -30,5 +31,10 @@ class Product extends Model
     public function category()
     {
         return $this->belongsTo(Category::class, 'category_id');
+    }
+
+    public function order()
+    {
+        return $this->belongsTo(Order::class);
     }
 }

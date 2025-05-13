@@ -1,5 +1,6 @@
 @props([
-    'product'
+    'product',
+    'hidden'
 ])
 
 <div class="flex items-center gap-4 p-4 bg-white rounded-2xl shadow-md border border-gray-200">
@@ -16,11 +17,13 @@
         </p>
     </div>
 
-    <form action="/cart/delete/{{ $product->id }}" method="POST">
-        @csrf
-        @method('DELETE')
-        <button class="bg-red-500 hover:bg-red-600 text-white font-medium px-4 py-2 rounded-xl transition">
-            Eliminar
-        </button>
-    </form>
+    @if($hidden != true)
+        <form action="/cart/delete/{{ $product->id }}" method="POST">
+            @csrf
+            @method('DELETE')
+            <button class="bg-red-500 hover:bg-red-600 text-white font-medium px-4 py-2 rounded-xl transition">
+                Eliminar
+            </button>
+        </form>
+    @endif
 </div>

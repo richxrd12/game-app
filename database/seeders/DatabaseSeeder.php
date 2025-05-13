@@ -18,10 +18,20 @@ class DatabaseSeeder extends Seeder
     {
         // User::factory(10)->create();
 
-        User::factory()->create([
+        $user = User::factory()->create([
             'name' => 'Test User',
             'email' => 'richard@gmail.com',
             'password' => '12345678'
+        ]);
+
+        $user->addresses()->create([
+            'country' => 'Spain',
+            'city' => 'LPGC',
+            'postal_code' => '35012',
+            'street' => 'Calle Loquetes',
+            'street_number' => '7',
+            'floor' => '2ndo',
+            'door_number' => '2F'
         ]);
 
         // Crear estados si no existen
