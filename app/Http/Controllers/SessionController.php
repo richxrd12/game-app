@@ -21,7 +21,7 @@ class SessionController extends Controller
 
         if (Auth::attempt($credentials)) {
             $request->session()->regenerate();
-            return redirect('/home');
+            return redirect('/');
         }
 
         return back()->withErrors([

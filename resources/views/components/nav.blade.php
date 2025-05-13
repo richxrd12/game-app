@@ -1,4 +1,4 @@
-<nav class="bg-white shadow-md py-4 px-8 flex justify-between items-center">
+<nav class="bg-white shadow-md py-4 px-8 flex justify-between items-center h-[10vh]">
 
     <a href="/" class="text-2xl font-bold text-blue-600 flex items-center gap-2">
         <img src="{{ asset('images/logo.webp') }}" alt="Logo" class="h-10">
@@ -17,6 +17,7 @@
         @endguest
 
         @auth
+            <a href="/cart"><img src="{{ asset('images/cart.png') }}" alt="cart" class="size-[4vh]"></a>
             {{-- Si el usuario está autenticado --}}
             <form action="/logout" method="POST" class="inline">
                 @csrf

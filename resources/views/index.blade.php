@@ -3,24 +3,23 @@
 @section('title', 'Home')
 
 @section('main')
-    <main>
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <h1 class="text-3xl font-bold text-center my-10">Game Bros</h1>
-        
-        <div id="categories" class="flex justify-center items-center">
-            <a href="/" class="inline-block px-6 py-2 text-sm font-semibold text-gray-700 bg-gray-100 rounded-full shadow-md hover:bg-blue-500 hover:text-white transition-all duration-300 transform hover:scale-105">
-                Todos
-            </a>
-            <a href="/discounted" class="inline-block px-6 py-2 text-sm font-semibold text-gray-700 bg-gray-100 rounded-full shadow-md hover:bg-blue-500 hover:text-white transition-all duration-300 transform hover:scale-105">
-                Ofertas
-            </a>
+
+        <!-- Categorías con Grid Responsive -->
+        <div id="categories" class="flex flex-wrap justify-center gap-4 mb-10">
+            <x-category :category="(object) ['name' => 'Todos']" href="/" />
+            <x-category :category="(object) ['name' => 'Ofertas']" href="/discounted" />
             @foreach ($categories as $category)
-                <x-category :category="$category"></x-category>
+                <x-category :category="$category" href="/category/{{ $category->id }}"/>
             @endforeach
         </div>
-        
 
-        @foreach ($products as $product)
-            <x-product_card :product="$product"></x-product_card>
-        @endforeach
+        <!-- Productos -->
+        <div class="grid gap-6 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
+            @foreach ($products as $product)
+                <x-product_card :product="$product" />
+            @endforeach
+        </div>
     </main>
 @endsection

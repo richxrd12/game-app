@@ -27,7 +27,7 @@
                     </p>
 
                     <p class="text-xl font-bold text-red-600">
-                        {{ number_format($product->price - $product->discount, 2) }}€
+                        {{ number_format($product->price - ($product->price * $product->discount / 100), 2) }} €
                     </p>
                 </div>
             @endif

@@ -1,5 +1,9 @@
 @extends('layouts.app')
 
+@php
+    $cart = auth()->user()->cart ?? null;
+@endphp
+
 @section('title', $product->name)
 
 @section('main')
@@ -20,7 +24,7 @@
                         {{ number_format($product->price, 2) }}€
                     </p>
                     <p class="text-xl font-bold text-red-600">
-                        {{ number_format($product->price - $product->discount, 2) }}€
+                        {{ number_format($product->price - ($product->price * $product->discount / 100), 2) }} €
                     </p>
                 @else
                     <p class="text-xl font-bold text-blue-600">
@@ -28,6 +32,33 @@
                     </p>
                 @endif
             </div>
+
+            @auth
+                @php
+                    $inCart = auth()->user()->cart->contains('id', $product->id);
+                @endphp
+
+                @if ($inCart)
+                    <form action="/cart/delete/{{ $product->id }}" method="POST">
+                        @csrf
+                        @method('DELETE')
+                        <button type="submit" class="bg-red-500">Eliminar del carrito</button>
+                    </form>
+                @else
+                    <form action="/cart/add/{{ $product->id }}" method="POST">
+                        @csrf
+                        <button type="submit" class="bg-red-500">Añadir al carrito</button>
+                    </form>
+                @endif
+                
+            @else
+                <form action="/cart/add/{{ $product->id }}" method="POST">
+                    @csrf
+                    <button type="submit" class="bg-red-500">Añadir al carrito</button>
+                </form>
+            @endauth
+
+
         </div>
     </div>
 @endsection
