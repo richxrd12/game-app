@@ -16,7 +16,7 @@
     <main>
         <p>Realizar pedido</p>
 
-        <form action="/order" method="POST">
+        <form action="/orders" method="POST">
             @csrf
             <input type="hidden" name="address" value="{{ $address->id }}">
             <div id="products">

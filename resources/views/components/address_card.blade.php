@@ -4,7 +4,7 @@
 
 @php
     $buying = session('buying');
-    $url = $buying ? "/order/address/{$address->id}" : "/address/{$address->id}";
+    $url = $buying ? "/orders/address/{$address->id}" : "/address/{$address->id}";
 @endphp
 
 <a href="{{ $url }}" class="p-2 shadow-md">

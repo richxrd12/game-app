@@ -3,9 +3,12 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 use App\Models\User;
 use App\Models\Address;
+use App\Models\Product;
+use App\Models\Category;
 
 class RegisterController extends Controller
 {
@@ -37,11 +40,11 @@ class RegisterController extends Controller
             'password' => $validated['password'],
         ]);
 
-        $url = session()->get('url');
+        Auth::login($user);
 
-        //HAY QUE PONER ESTO ANTES DE TRARLO AL REGISTRO: session()->put('url', url()->previous());
-        if($url) return redirect($url);
+        $products = Product::whereNull('order_id')->get();
+        $categories = Category::all();
 
-        return view('index');
+        return view('index', compact('products', 'categories'));
     }
 }

@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 
 use App\Models\Product;
+use App\Models\Address;
 
 class Order extends Model
 {
@@ -18,5 +19,10 @@ class Order extends Model
     public function products()
     {
         return $this->hasMany(Product::class);
+    }
+
+    public function address()
+    {
+        return $this->belongsTo(Address::class);
     }
 }

@@ -21,7 +21,7 @@
         @endforeach
 
         <p>Total: {{ number_format($total, 2) }} €</p>
-        <a href="/order/address" class="bg-red-500">Realizar pedido</a>
+        <a href="/orders/address" class="bg-red-500">Realizar pedido</a>
 
     @else
         <a href="/"><p class="font-bold">No hay nada en el carrito, pulse para ver productos</a></p>

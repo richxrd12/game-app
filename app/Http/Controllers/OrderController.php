@@ -14,6 +14,13 @@ class OrderController extends Controller
         return view('order.orders');
     }
 
+    public function show($id)
+    {
+        $order = Order::find($id);
+        
+        return view('order.show_order', compact('order'));
+    }
+
     public function address()
     {
         session(['buying' => true]);

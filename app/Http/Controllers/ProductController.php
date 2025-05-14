@@ -26,7 +26,7 @@ class ProductController extends Controller
 
     public function filter($id)
     {
-        $products = Product::where('category_id', $id)->get();
+        $products = Product::whereNull('order_id')->where('category_id', $id)->get();
         $categories = Category::all();
 
         return view('index', compact('products', 'categories'));
@@ -34,7 +34,7 @@ class ProductController extends Controller
 
     public function discounted()
     {
-        $products = Product::where('is_discounted', true)->get();
+        $products = Product::whereNull('order_id')->where('is_discounted', true)->get();
         $categories = Category::all();
 
         return view('index', compact('products', 'categories'));
