@@ -36,6 +36,7 @@
             @auth
                 @php
                     $inCart = auth()->user()->cart->contains('id', $product->id);
+                    $inWishlist = auth()->user()->wishlist->contains('id', $product->id);
                 @endphp
 
                 @if ($inCart)
@@ -48,6 +49,19 @@
                     <form action="/cart/add/{{ $product->id }}" method="POST">
                         @csrf
                         <button type="submit" class="bg-red-500">Añadir al carrito</button>
+                    </form>
+                @endif
+
+                @if($inWishlist)
+                    <form action="/wishlist/delete/{{ $product->id }}" method="POST">
+                        @csrf
+                        @method('DELETE')
+                        <button type="submit" class="font-bold flex items-center">Agregar a la lista de deseados <img src="{{ asset('images/filled_heart.png') }}" alt="heart" class="ml-2 size-[4vh]"></button>
+                    </form>
+                @else
+                    <form action="/wishlist/add/{{ $product->id }}" method="POST">
+                        @csrf
+                        <button type="submit" class="font-bold flex items-center">Agregar a la lista de deseados<img src="{{ asset('images/lined_heart.png') }}" alt="heart" class="ml-2 size-[4vh]"></button>
                     </form>
                 @endif
                 

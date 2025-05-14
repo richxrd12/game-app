@@ -6,6 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>@yield('title', 'Game App')</title>
     @vite('resources/css/app.css')
+    @vite('resources/js/nav.js')
     @yield('imports')
 </head>
 <body>

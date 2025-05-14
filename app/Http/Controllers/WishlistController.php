@@ -4,18 +4,20 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-class CartController extends Controller
+use App\Models\Wishlist;
+
+class WishlistController extends Controller
 {
     public function index()
     {
-        return view('cart');
+        return view('wishlist');
     }
 
     public function store($id)
     {
         if (auth()->check())
         {
-            auth()->user()->cart()->attach($id);
+            auth()->user()->wishlist()->attach($id);
 
             return redirect()->back();
         }
@@ -27,13 +29,8 @@ class CartController extends Controller
 
     public function remove($id)
     {
-        auth()->user()->cart()->detach($id);
+        auth()->user()->wishlist()->detach($id);
 
         return redirect()->back();
-    }
-
-    public function clear()
-    {
-        auth()->user()->cart()->detach();
     }
 }
