@@ -11,7 +11,7 @@
         <h1 class="text-center font-bold text-3xl my-10">Lista de deseados</h1>
 
         @if ($wishlist->isNotEmpty())
-            <div class="grid gap-6 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 p-4">
+            <div class="flex flex-wrap justify-center gap-6 mx-auto max-w-full">
                 @foreach ($wishlist as $product)
                     <x-product_card :product="$product" />
                 @endforeach
