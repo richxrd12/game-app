@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\SessionController;
 use App\Http\Controllers\RegisterController;
+use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\OrderController;
@@ -25,6 +26,10 @@ Route::get('/discounted', [ProductController::class, 'discounted']);
 
 
 Route::middleware('auth')->group(function (){
+    //Profile
+    Route::get('/profile', [ProfileController::class, 'index'])->name('profile');    
+    Route::put('/profile', [ProfileController::class, 'update']);
+    Route::delete('/profile', [ProfileController::class, 'destroy']);
     //Cart 
     Route::get('/cart', [CartController::class, 'index']);
     Route::post('/cart/add/{id}', [CartController::class, 'store']);
@@ -38,7 +43,7 @@ Route::middleware('auth')->group(function (){
 
     //Order
     Route::get('/orders', [OrderController::class, 'index']);
-    Route::get('/orders/address', [OrderController::class, 'address']);
+    Route::get('/orders/address', [OrderController::class, 'address'])->name('cart.address');
     Route::get('/orders/address/{id}', [OrderController::class, 'create']);
     Route::get('/orders/{id}', [OrderController::class, 'show']);
     Route::post('/orders', [OrderController::class, 'store']);

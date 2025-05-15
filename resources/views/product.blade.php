@@ -7,7 +7,7 @@
 @section('title', $product->name)
 
 @section('main')
-    <div class="product-detail">
+    <main class="bg-[#F9FAFB] min-h-[90vh]">
         <img src="{{ $product->image }}" alt="{{ $product->name }}" class="w-full h-96 object-cover">
 
         <div class="p-6">
@@ -74,5 +74,5 @@
 
 
         </div>
-    </div>
+    </main>
 @endsection

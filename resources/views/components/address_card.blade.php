@@ -7,7 +7,7 @@
     $url = $buying ? "/orders/address/{$address->id}" : "/address/{$address->id}";
 @endphp
 
-<a href="{{ $url }}" class="p-2 shadow-md">
+<a href="{{ $url }}" class="p-2 shadow-md max-h-fit">
     <h2 class="text-xl font-semibold text-gray-800 mb-4">Dirección</h2>
         
     <div class="space-y-1 text-gray-700">

@@ -13,7 +13,7 @@
 @section('title', 'Realizar pedido')
 
 @section('main')
-    <main>
+    <main class="bg-[#F9FAFB] min-h-[90vh]">
         <p>Realizar pedido</p>
 
         <form action="/orders" method="POST">

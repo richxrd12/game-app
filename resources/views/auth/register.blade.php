@@ -7,32 +7,33 @@
 @endsection
 
 @section('main')
-    <main class="min-h-screen flex items-center justify-center bg-gray-100 p-6">
-        <div class="bg-white p-8 rounded-2xl shadow-md w-full max-w-4xl">
-            <h2 class="text-2xl font-bold mb-6 text-center">Registro</h2>
-            <form action="/register" method="POST" class="grid grid-cols-1 md:grid-cols-2 gap-6">
+    <main class="bg-[#F9FAFB] min-h-[90vh] flex items-center justify-center px-4">
+        <div class="p-8 sm:p-10 lg:p-14 shadow-2xl rounded-2xl w-full max-w-[480px] lg:max-w-[600px]">
+            <h1 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-center text-[#5B2AB1]">Registro</h1>
+            <form action="/register" method="POST" class="flex flex-col gap-6">
                 @csrf
-                <!-- Info personal -->
-                <div class="flex flex-col gap-4">
-                    <div>
-                        <label for="name" class="block text-sm font-medium text-gray-700">Nombre</label>
-                        <input type="text" name="name" id="name" value="{{ old('name') }}" required class="mt-1 block w-full rounded-lg border border-gray-300 shadow-sm p-2 focus:ring-blue-500 focus:border-blue-500"/>
-                    </div>
+                <div>
+                    <label for="name" class="block text-sm lg:text-base font-medium text-[#1F2937]">Nombre</label>
+                    <input type="text" name="name" id="name" value="{{ old('name') }}" required class="mt-1 w-full border border-gray-300 rounded-lg p-3 text-base focus:outline-none focus:ring-2 focus:ring-[#5B2AB1]"/>
+                </div>
 
-                    <div>
-                        <label for="email" class="block text-sm font-medium text-gray-700">Email</label>
-                        <input type="email" name="email" id="email" value="{{ old('email') }}" required class="mt-1 block w-full rounded-lg border border-gray-300 shadow-sm p-2 focus:ring-blue-500 focus:border-blue-500"/>
-                    </div>
+                <div>
+                    <label for="email" class="block text-sm lg:text-base font-medium text-[#1F2937]">Email</label>
+                    <input type="email" name="email" id="email" value="{{ old('email') }}" required class="mt-1 w-full border border-gray-300 rounded-lg p-3 text-base focus:outline-none focus:ring-2 focus:ring-[#5B2AB1]"/>
+                </div>
 
-                    <div>
-                        <label for="password" class="block text-sm font-medium text-gray-700">Contraseña</label>
-                        <input type="password" name="password" id="password" required class="mt-1 block w-full rounded-lg border border-gray-300 shadow-sm p-2 focus:ring-blue-500 focus:border-blue-500"/>
-                    </div>
+                <div>
+                    <label for="password" class="block text-sm lg:text-base font-medium text-[#1F2937]">Contraseña</label>
+                    <input type="password" name="password" id="password" required class="mt-1 w-full border border-gray-300 rounded-lg p-3 text-base focus:outline-none focus:ring-2 focus:ring-[#5B2AB1]"/>
+                </div>
 
-                    <div>
-                        <label for="password_confirmation" class="block text-sm font-medium text-gray-700">Repetir contraseña</label>
-                        <input type="password" name="password_confirmation" id="password_confirmation" required class="mt-1 block w-full rounded-lg border border-gray-300 shadow-sm p-2 focus:ring-blue-500 focus:border-blue-500"/>
-                    </div>
+                <div>
+                    <label for="password_confirmation" class="block text-sm lg:text-base font-medium text-[#1F2937]">Repetir contraseña</label>
+                    <input type="password" name="password_confirmation" id="password_confirmation" required class="mt-1 w-full border border-gray-300 rounded-lg p-3 text-base focus:outline-none focus:ring-2 focus:ring-[#5B2AB1]"/>
+                </div>
+
+                <div class="flex justify-end text-sm mb-8">
+                    <a href="/login" class="hover:underline font-semibold text-[#5B2AB1]">¿Ya tienes cuenta? Inicia sesión</a>
                 </div>
 
                 <!-- Botón invisible para luego simular el click luego -->
@@ -51,11 +52,10 @@
                 </div>
             @endif
 
-            <div class="md:col-span-2 flex justify-center mt-8">
-                <button type="button" id="button" class="bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 px-6 rounded-lg shadow">
-                    Registrarse
-                </button>
-            </div>
+            <button type="button" id="button" class="w-full bg-[#5B2AB1] hover:bg-[#F9FAFB] text-white hover:text-[#5B2AB1] font-semibold py-3 rounded-lg text-base lg:text-lg transition duration-300">
+                Registrarse
+            </button>
+            
         </div>
     </main>
 

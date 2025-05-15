@@ -49,6 +49,11 @@ class OrderController extends Controller
             $total += $product->price - (($product->price * $product->discount) / 100);
         }
 
+        if ($total == 0)
+        {
+            return redirect('/orders');
+        }
+
         $order = Order::create([
             'user_id' => auth()->id(),
             'address_id' => $address->id,

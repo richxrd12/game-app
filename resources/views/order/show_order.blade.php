@@ -1,10 +1,10 @@
 @extends('layouts.app')
 
-@section('title', "Pedido $order->id")
+@section('title', "Pedido #$order->id")
 
 @section('main')
-    <main>
-        <a href="/orders"></a>
+    <main class="bg-[#F9FAFB] min-h-[90vh]">
+        <a href="/orders">Volver a pedidos</a>
         <div class="max-w-4xl mx-auto px-4 py-8">
             <div class="bg-white shadow-xl rounded-xl p-6 border border-gray-200">
 

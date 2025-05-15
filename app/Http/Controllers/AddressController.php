@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Route;
 
 class AddressController extends Controller
 {
@@ -14,6 +15,7 @@ class AddressController extends Controller
 
     public function create()
     {
+        dd(Route::currentRouteName());
         return view('address.create_address');
     }
 

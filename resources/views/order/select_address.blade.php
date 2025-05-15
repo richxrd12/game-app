@@ -7,7 +7,7 @@
 @section('title', 'Seleccionar dirección')
 
 @section('main')
-<main class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 p-4 items-stretch">
+<main class="bg-[#F9FAFB] min-h-[90vh] grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 p-4 items-stretch">
 
     <a href="/address/create">
         <div class="card-box flex items-center justify-center text-gray-600 hover:bg-gray-50 transition">
