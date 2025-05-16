@@ -34,43 +34,67 @@
         </div>
 
         <div class="flex flex-wrap items-center gap-6 mt-4">
-            @auth
-                @php
-                    $inCart = auth()->user()->cart->contains('id', $product->id);
-                    $inWishlist = auth()->user()->wishlist->contains('id', $product->id);
-                @endphp
+            @if (!$product->order)
+                <!-- Si está autenticado -->
+                @auth
+                    @php
+                        $inCart = auth()->user()->cart->contains('id', $product->id);
+                        $inWishlist = auth()->user()->wishlist->contains('id', $product->id);
+                    @endphp
 
-                @if ($inCart)
-                    <form action="/cart/delete/{{ $product->id }}" method="POST">
-                        @csrf
-                        @method('DELETE')
-                        <button type="submit"
-                            class="bg-[#5B2AB1] text-white px-5 py-2 rounded-xl shadow hover:bg-[#F9FAFB] hover:text-[#5B2AB1] transition">
-                            Eliminar del carrito
-                        </button>
-                    </form>
+                    @if ($inCart)
+                        <form action="/cart/delete/{{ $product->id }}" method="POST">
+                            @csrf
+                            @method('DELETE')
+                            <button type="submit"
+                                class="bg-[#5B2AB1] text-white px-5 py-2 rounded-xl shadow hover:bg-[#F9FAFB] hover:text-[#5B2AB1] transition">
+                                Eliminar del carrito
+                            </button>
+                        </form>
+                    @else
+                        <form action="/cart/add/{{ $product->id }}" method="POST">
+                            @csrf
+                            <button type="submit"
+                                class="bg-[#5B2AB1] text-white px-5 py-2 rounded-xl shadow hover:bg-[#F9FAFB] hover:text-[#5B2AB1] transition">
+                                Añadir al carrito
+                            </button>
+                        </form>
+                    @endif
+
+                    @if($inWishlist)
+                        <form action="/wishlist/delete/{{ $product->id }}" method="POST">
+                            @csrf
+                            @method('DELETE')
+                            <button type="submit" class="bg-[#5B2AB1] text-white px-5 py-2 rounded-xl hover:bg-[#7C3DE2] transition font-semibold flex items-center gap-2">
+                                Wishlist
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24" class="w-6 h-6 text-[#F9FAFB]">
+                                    <path d="M12 21.35c-.36-.32-.74-.64-1.12-.97C6.6 16.28 3 13.05 3 9.25 3 6.6 5.24 4.5 7.9 4.5c1.71 0 3.3.94 4.1 2.37.8-1.43 2.39-2.37 4.1-2.37 2.66 0 4.9 2.1 4.9 4.75 0 3.8-3.6 7.03-7.88 11.13-.38.34-.76.66-1.12.97z"/>
+                                </svg>
+                            </button>
+                        </form>
+                    @else
+                        <form action="/wishlist/add/{{ $product->id }}" method="POST">
+                            @csrf
+                            <button type="submit" class="bg-[#5B2AB1] text-white px-5 py-2 rounded-xl hover:bg-[#7C3DE2] transition font-semibold flex items-center gap-2">
+                                Wishlist
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-width="2"
+                                    viewBox="0 0 24 24" class="w-6 h-6 text-white">
+                                    <path d="M12 21.35c-.36-.32-.74-.64-1.12-.97C6.6 16.28 3 13.05 3 9.25 3 6.6 5.24 4.5 7.9 4.5c1.71 0 3.3.94 4.1 2.37.8-1.43 2.39-2.37 4.1-2.37 2.66 0 4.9 2.1 4.9 4.75 0 3.8-3.6 7.03-7.88 11.13-.38.34-.76.66-1.12.97z"/>
+                                </svg>
+                            </button>
+                        </form>
+                    @endif
+                
+                <!-- Si no está autenticado -->
                 @else
                     <form action="/cart/add/{{ $product->id }}" method="POST">
                         @csrf
                         <button type="submit"
-                            class="bg-[#5B2AB1] text-white px-5 py-2 rounded-xl shadow hover:bg-[#F9FAFB] hover:text-[#5B2AB1] transition">
+                            class="bg-[#5B2AB1] text-white px-5 py-2 rounded-xl shadow hover:bg-indigo-700 transition">
                             Añadir al carrito
                         </button>
                     </form>
-                @endif
 
-                @if($inWishlist)
-                    <form action="/wishlist/delete/{{ $product->id }}" method="POST">
-                        @csrf
-                        @method('DELETE')
-                        <button type="submit" class="bg-[#5B2AB1] text-white px-5 py-2 rounded-xl hover:bg-[#7C3DE2] transition font-semibold flex items-center gap-2">
-                            Wishlist
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24" class="w-6 h-6 text-[#F9FAFB]">
-                                <path d="M12 21.35c-.36-.32-.74-.64-1.12-.97C6.6 16.28 3 13.05 3 9.25 3 6.6 5.24 4.5 7.9 4.5c1.71 0 3.3.94 4.1 2.37.8-1.43 2.39-2.37 4.1-2.37 2.66 0 4.9 2.1 4.9 4.75 0 3.8-3.6 7.03-7.88 11.13-.38.34-.76.66-1.12.97z"/>
-                            </svg>
-                        </button>
-                    </form>
-                @else
                     <form action="/wishlist/add/{{ $product->id }}" method="POST">
                         @csrf
                         <button type="submit" class="bg-[#5B2AB1] text-white px-5 py-2 rounded-xl hover:bg-[#7C3DE2] transition font-semibold flex items-center gap-2">
@@ -81,17 +105,8 @@
                             </svg>
                         </button>
                     </form>
-                @endif
-
-            @else
-                <form action="/cart/add/{{ $product->id }}" method="POST">
-                    @csrf
-                    <button type="submit"
-                        class="bg-[#5B2AB1] text-white px-5 py-2 rounded-xl shadow hover:bg-indigo-700 transition">
-                        Añadir al carrito
-                    </button>
-                </form>
-            @endauth
+                @endauth                    
+            @endif
         </div>
     </div>
 </main>

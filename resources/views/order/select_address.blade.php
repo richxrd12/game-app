@@ -8,6 +8,13 @@
 
 @section('main')
     <main class="bg-[#F9FAFB] min-h-[90vh] px-4 sm:px-8 lg:px-16 py-10">
+
+        @if (session('success'))
+            <div class="bg-green-100 text-green-800 px-4 py-2 rounded-lg">
+                {{ session('success') }}
+            </div>
+        @endif
+
         <h1 class="text-3xl font-extrabold text-[#5B2AB1] text-center mb-10">Selecciona una dirección</h1>
 
         <div class="flex flex-wrap justify-center gap-6 mx-auto max-w-6xl">

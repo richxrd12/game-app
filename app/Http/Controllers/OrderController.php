@@ -69,6 +69,8 @@ class OrderController extends Controller
             $product->wishlists()->detach();
         }
 
+        session(['buying' => false]);
+
         return view('order.orders');
     }
 }

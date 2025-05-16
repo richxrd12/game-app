@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
+use App\Models\Address;
+
 class AddressController extends Controller
 {
     public function create()
@@ -57,16 +59,17 @@ class AddressController extends Controller
             $buying = false;
             session('buying');
 
-            return view('order.select_address');
+            return redirect()->route('order.address')->with('success', 'Dirección añadida correctamente');
         }
 
         return view('profile');
     }
 
-    //----------------------HAY QUE HACERLO--------------------
     public function show($id)
     {
-        return view('address');
+        $address = Address::findOrFail($id);
+
+        return view('address.create_address', compact('address'));
     }
 
     public function update($id)

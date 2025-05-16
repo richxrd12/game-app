@@ -7,6 +7,7 @@
     <title>@yield('title', 'Game App')</title>
     @vite('resources/css/app.css')
     @vite('resources/js/nav.js')
+    @vite('resources/js/remove_success.js')
     @yield('imports')
 </head>
 <body>

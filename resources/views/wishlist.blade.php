@@ -19,7 +19,7 @@
         @else
             <div class="text-center py-20">
                 <p class="text-[#1F2937] text-lg mb-6">
-                    Parece que el carrito está vacío. Explora nuestro catálogo y encuentra lo que te gusta.
+                    Parece que la lista de deseados está vacía. Explora nuestro catálogo y encuentra lo que te gusta.
                 </p>
                 <a href="/" class="inline-block bg-[#5B2AB1] hover:bg-[#4A2194] text-white px-6 py-3 rounded-xl shadow transition font-medium">
                     Ver productos

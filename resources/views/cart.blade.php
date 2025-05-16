@@ -15,7 +15,7 @@
 @section('main')
     <main class="bg-[#F9FAFB] min-h-[90vh] px-4 sm:px-8 lg:px-16 py-10 flex justify-center">
         <div class="w-full max-w-3xl min-w-[320px]">
-            <h1 class="text-center font-bold text-3xl text-[#5B2AB1] mb-10">Carrito</h1>
+            <h1 class="text-center font-bold text-3xl text-[#5B2AB1] mb-8">Carrito</h1>
 
             @if($cart->isNotEmpty())
                 <div class="space-y-4">

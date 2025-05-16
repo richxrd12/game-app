@@ -19,7 +19,7 @@ Route::get('/register', [RegisterController::class, 'index']);
 Route::post('/register', [RegisterController::class, 'store']);
 
 //Products
-Route::get('/', [ProductController::class, 'index']);
+Route::get('/', [ProductController::class, 'index'])->name('home');
 Route::get('/category/{id}', [ProductController::class, 'filter']);
 Route::get('/product/{id}', [ProductController::class, 'show']);
 Route::get('/discounted', [ProductController::class, 'discounted']);
@@ -28,8 +28,9 @@ Route::get('/discounted', [ProductController::class, 'discounted']);
 Route::middleware('auth')->group(function (){
     //Profile
     Route::get('/profile', [ProfileController::class, 'index'])->name('profile');    
-    Route::put('/profile', [ProfileController::class, 'update']);
+    Route::put('/profile/{id}', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy']);
+
     //Cart 
     Route::get('/cart', [CartController::class, 'index']);
     Route::post('/cart/add/{id}', [CartController::class, 'store']);
@@ -43,7 +44,7 @@ Route::middleware('auth')->group(function (){
 
     //Order
     Route::get('/orders', [OrderController::class, 'index']);
-    Route::get('/orders/address', [OrderController::class, 'address'])->name('cart.address');
+    Route::get('/orders/address', [OrderController::class, 'address'])->name('order.address');
     Route::get('/orders/address/{id}', [OrderController::class, 'create']);
     Route::get('/orders/{id}', [OrderController::class, 'show']);
     Route::post('/orders', [OrderController::class, 'store']);
@@ -51,6 +52,6 @@ Route::middleware('auth')->group(function (){
     //Address
     Route::post('/address', [AddressController::class, 'store']);
     Route::get('/address/create', [AddressController::class, 'create']);
-
+    Route::get('/address/{id}', [AddressController::class, 'show'])->name('address.show');
 });
 
