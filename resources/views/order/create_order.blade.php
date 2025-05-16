@@ -13,56 +13,75 @@
 @section('title', 'Realizar pedido')
 
 @section('main')
-    <main class="bg-[#F9FAFB] min-h-[90vh]">
-        <p>Realizar pedido</p>
+    <main class="bg-[#F9FAFB] min-h-[90vh] px-4 sm:px-8 lg:px-16 py-10">
+        <h1 class="text-3xl font-bold text-[#5B2AB1] text-center mb-10">Resumen del pedido</h1>
 
-        <form action="/orders" method="POST">
+        <form action="/orders" method="POST" class="max-w-3xl mx-auto space-y-10">
             @csrf
             <input type="hidden" name="address" value="{{ $address->id }}">
-            <div id="products">
+
+            <div class="bg-white rounded-2xl shadow-lg p-6 border border-gray-100 max-w-4xl mx-auto">
+                <div class="flex items-center gap-3 mb-6">
+                    <svg class="w-6 h-6 text-[#5B2AB1]" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round"
+                            d="M12 11c1.657 0 3-1.343 3-3S13.657 5 12 5 9 6.343 9 8s1.343 3 3 3zm0 0c2.761 0 5 2.239 5 5 0 2.732-2.151 4.986-4.885 4.999A5.001 5.001 0 017 16c0-2.761 2.239-5 5-5z" />
+                    </svg>
+                    <h2 class="text-xl font-semibold text-gray-800">Dirección de envío</h2>
+                </div>
+
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 text-gray-700">
+                    <div>
+                        <p class="font-medium text-sm mb-1">País</p>
+                        <p>{{ $address->country }}</p>
+                    </div>
+
+                    <div>
+                        <p class="font-medium text-sm mb-1">Ciudad</p>
+                        <p>{{ $address->city }}</p>
+                    </div>
+
+                    <div>
+                        <p class="font-medium text-sm mb-1">Código postal</p>
+                        <p>{{ $address->postal_code }}</p>
+                    </div>
+
+                    <div>
+                        <p class="font-medium text-sm mb-1">Calle / Plaza / Avenida</p>
+                        <p>{{ $address->street }}</p>
+                    </div>
+
+                    <div>
+                        <p class="font-medium text-sm mb-1">Nº</p>
+                        <p>{{ $address->street_number }}</p>
+                    </div>
+
+                    <div>
+                        <p class="font-medium text-sm mb-1">Piso</p>
+                        <p>{{ $address->floor ?: '—' }}</p>
+                    </div>
+
+                    <div>
+                        <p class="font-medium text-sm mb-1">Puerta</p>
+                        <p>{{ $address->door_number ?: '—' }}</p>
+                    </div>
+                </div>
+            </div>
+
+            <div id="products" class="space-y-4">
                 @foreach($cart as $product)
                     <x-product_row :product="$product" :hidden="true"/>
                 @endforeach
             </div>
-            <div class="flex flex-col gap-4 max-w-[70vh] mx-auto mt-20">
-            <div>
-                <label for="country" class="block text-sm font-medium text-gray-700">País</label>
-                <input type="text" name="country" id="country" value="{{ $address->country }}" class="mt-1 block w-full p-2" required disabled/>
+
+
+            <div class="flex items-center justify-between bg-white rounded-2xl shadow p-6 border border-gray-200">
+                <p class="text-xl font-semibold text-gray-700">Total: 
+                    <span class="text-[#5B2AB1]">{{ number_format($total, 2) }} €</span>
+                </p>
+                <button type="submit" class="bg-[#5B2AB1] hover:bg-[#4A2194] text-white px-6 py-3 rounded-xl font-semibold shadow transition">
+                    Hacer pedido
+                </button>
             </div>
-
-            <div>
-                <label for="city" class="block text-sm font-medium text-gray-700">Ciudad</label>
-                <input type="text" name="city" id="city" value="{{ $address->city }}" required class="mt-1 block w-full p-2" disabled/>
-            </div>
-
-            <div>
-                <label for="postal_code" class="block text-sm font-medium text-gray-700">Código postal</label>
-                <input type="text" name="postal_code" id="postal_code" value="{{ $address->postal_code }}"required class="mt-1 block w-full p-2" disabled/>
-            </div>
-
-            <div>
-                <label for="street" class="block text-sm font-medium text-gray-700">Calle/Plaza/Avenida</label>
-                <input type="text" name="street" id="street" value="{{ $address->street }}" required class="mt-1 block w-full rounded-lg sm p-2" disabled/>
-            </div>
-
-            <div class="grid grid-cols-3 gap-2">
-                <div>
-                    <label for="street_number" class="block text-sm font-medium text-gray-700">Nº</label>
-                    <input type="text" name="street_number" id="street_number" value="{{ $address->street_number }}" required class="mt-1 block w-full" disabled/>
-                </div>
-                <div>
-                    <label for="floor" class="block text-sm font-medium text-gray-700">Piso</label>
-                    <input type="text" name="floor" id="floor" value="{{ $address->floor }}" class="mt-1 block w-full" disabled/>
-                </div>
-                <div>
-                    <label for="door_number" class="block text-sm font-medium text-gray-700">Puerta</label>
-                    <input type="text" name="door_number" id="door_number" value="{{ $address->door_number }}" class="mt-1 block w-full" disabled/>
-                </div>
-            </div>
-
-            <input type="text" value="{{ number_format($total, 2) }} €" disabled>
-
-            <button class="bg-red-500 max-w-min mx-auto">Hacer pedido</button>
         </form>
     </main>
 @endsection

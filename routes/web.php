@@ -49,7 +49,6 @@ Route::middleware('auth')->group(function (){
     Route::post('/orders', [OrderController::class, 'store']);
 
     //Address
-    Route::get('/address', [AddressController::class, 'index']);
     Route::post('/address', [AddressController::class, 'store']);
     Route::get('/address/create', [AddressController::class, 'create']);
 

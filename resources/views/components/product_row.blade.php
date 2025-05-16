@@ -3,7 +3,7 @@
     'hidden'
 ])
 
-<div class="flex items-center gap-5 p-4 bg-[#F9FAFB] rounded-2xl shadow-sm border border-gray-200 hover:shadow-md transition-shadow duration-200">
+<div class="flex items-center gap-5 p-4 bg-white rounded-2xl shadow-sm border border-gray-200 hover:shadow-md transition-shadow duration-200">
     <a href="/product/{{ $product->id }}">
         <img src="{{ $product->image }}" alt="{{ $product->name }}" class="size-14 object-cover rounded-xl ring-2 ring-[#EDE9FE]">
     </a>

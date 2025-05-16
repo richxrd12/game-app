@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 use App\Models\ProductStatus;
 use App\Models\Category;
+use App\Models\User;
 
 class Product extends Model
 {
@@ -36,5 +37,15 @@ class Product extends Model
     public function order()
     {
         return $this->belongsTo(Order::class);
+    }
+
+    public function carts()
+    {
+        return $this->belongsToMany(User::class, 'cart_products');
+    }
+
+    public function wishlists()
+    {
+        return $this->belongsToMany(User::class, 'wishlist');
     }
 }

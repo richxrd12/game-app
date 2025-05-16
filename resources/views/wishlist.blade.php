@@ -7,8 +7,8 @@
 @section('title', 'Lista de deseados')
 
 @section('main')
-    <main>
-        <h1 class="text-center font-bold text-3xl my-10">Lista de deseados</h1>
+    <main class="bg-[#F9FAFB] min-h-[90vh] p-10">
+        <h1 class="text-center font-bold text-3xl text-[#5B2AB1] mb-8">Lista de deseados</h1>
 
         @if ($wishlist->isNotEmpty())
             <div class="flex flex-wrap justify-center gap-6 mx-auto max-w-full">
@@ -18,8 +18,10 @@
             </div>
         @else
             <div class="text-center py-20">
-                <p class="text-gray-600 mb-6">Parece que aún no has añadido productos a tu lista de deseos. Explora nuestro catálogo y encuentra lo que te gusta.</p>
-                <a href="/" class="inline-block bg-blue-600 text-white px-6 py-2 rounded-lg shadow hover:bg-blue-700 transition font-medium">
+                <p class="text-[#1F2937] text-lg mb-6">
+                    Parece que el carrito está vacío. Explora nuestro catálogo y encuentra lo que te gusta.
+                </p>
+                <a href="/" class="inline-block bg-[#5B2AB1] hover:bg-[#4A2194] text-white px-6 py-3 rounded-xl shadow transition font-medium">
                     Ver productos
                 </a>
             </div>

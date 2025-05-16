@@ -7,15 +7,13 @@ use Illuminate\Support\Facades\Route;
 
 class AddressController extends Controller
 {
-    public function index()
-    {
-        //RETORNAR LA VIEW DE TODAS LAS ADDRESS
-        return view('order.select_address');
-    }
-
     public function create()
     {
-        dd(Route::currentRouteName());
+        if(request()->is('/orders/address'))
+        {
+            $buying = true;
+            session('buying');
+        }
         return view('address.create_address');
     }
 
@@ -55,16 +53,24 @@ class AddressController extends Controller
 
         if ($buying)
         {
+            //Le quitamos el buying
+            $buying = false;
+            session('buying');
+
             return view('order.select_address');
         }
 
-        //HAY QUE CAMBIARLO POR EL INDEX DE ARRIBA CUANDO ESTÉ HECHO
-        return view('index');
+        return view('profile');
     }
 
+    //----------------------HAY QUE HACERLO--------------------
     public function show($id)
     {
-        //HAY QUE HACERLO
+        return view('address');
+    }
+
+    public function update($id)
+    {
         return view('address');
     }
 }

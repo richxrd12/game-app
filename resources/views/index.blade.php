@@ -12,7 +12,7 @@
 
 @section('main')
     <main class="bg-[#F9FAFB] min-h-[90vh] w-full mx-auto p-10 sm:px-6 lg:px-8">
-        <h1 class="text-3xl font-bold text-center">Game Bros</h1>
+        <h1 class="text-3xl font-bold text-center text-[#5B2AB1]">Game Bros</h1>
 
         <div id="categories" class="flex flex-wrap justify-center gap-4 my-10 max-w-[70vh] mx-auto">
             <x-category :category="(object) ['name' => 'Todos']" href="/" :selected="request()->is('/')"/>

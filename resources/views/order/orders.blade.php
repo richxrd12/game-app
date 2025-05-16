@@ -7,11 +7,14 @@
 @section('title', 'Pedidos')
 
 @section('main')
-    <main class="bg-[#F9FAFB] min-h-[90vh]">
+    <main class="bg-[#F9FAFB] min-h-[90vh] p-10">
+        <h1 class="text-3xl font-bold text-center text-[#5B2AB1] mb-8">Historial de pedidos</h1>
         @if($orders->isNotEmpty())
-            @foreach($orders as $order)
-                <x-order_card :order="$order"/>
-            @endforeach
+            <div class="max-w-[70vw] mx-auto flex flex-col space-y-4">
+                @foreach($orders as $order)
+                    <x-order_card :order="$order"/>
+                @endforeach
+            </div>
         @else
             <div class="text-center py-20">
                 <p class="text-gray-600 mb-6">Parece que aún no tienes ningún pedido. Explora nuestro catálogo y encuentra lo que te gusta.</p>

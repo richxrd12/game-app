@@ -65,9 +65,9 @@ class OrderController extends Controller
         {
             $product->order_id = $order->id;
             $product->save();
+            $product->carts()->detach();
+            $product->wishlists()->detach();
         }
-
-        auth()->user()->cart()->detach();
 
         return view('order.orders');
     }

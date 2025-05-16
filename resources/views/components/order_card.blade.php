@@ -3,7 +3,7 @@
 ])
 
 <a href="/orders/{{ $order->id }}">
-    <div class="p-4 bg-white shadow rounded-xl border border-gray-200">
+    <div class="p-4 bg-white shadow rounded-xl border border-gray-200 hover:border-[#5B2AB1] h-full">
         <h2 class="text-lg font-semibold mb-2">Pedido #{{ $order->id }}</h2>
 
         <div class="text-sm text-gray-600 mb-1">
@@ -25,8 +25,9 @@
             💰 Total: <span class="font-semibold">{{ number_format($order->total, 2) }} €</span>
         </div>
 
-        <div class="text-sm text-gray-500">
-            🕒 Realizado el {{ $order->created_at->format('d/m/Y H:i') }}
+        <div class="flex justify-between">
+            <p class="text-sm text-gray-500">🕒 {{ $order->created_at->format('d/m/Y H:i') }}</p>
+            <p class="text-sm text-[#5B2AB1]">Ver detalles del pedido →</p>
         </div>
     </div>
 </a>
