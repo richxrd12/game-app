@@ -8,7 +8,7 @@
 
 @section('main')
 <main class="bg-[#F9FAFB] min-h-[90vh]">
-    <img src="{{ $product->image }}" alt="{{ $product->name }}" class="max-w-3xl mx-auto h-96 object-cover">
+    <img src="{{ asset($product->image) }}" alt="{{ $product->name }}" class="max-w-3xl mx-auto h-96 object-cover">
 
     <div class="p-6 max-w-3xl mx-auto flex flex-col gap-4">
         <h2 class="text-3xl font-bold text-[#1F2937]">{{ $product->name }}</h2>

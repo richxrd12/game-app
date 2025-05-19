@@ -24,8 +24,11 @@
                 <div class="flex items-center gap-3 mb-6">
                     <svg class="w-6 h-6 text-[#5B2AB1]" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round"
-                            d="M12 11c1.657 0 3-1.343 3-3S13.657 5 12 5 9 6.343 9 8s1.343 3 3 3zm0 0c2.761 0 5 2.239 5 5 0 2.732-2.151 4.986-4.885 4.999A5.001 5.001 0 017 16c0-2.761 2.239-5 5-5z" />
+                            d="M12 11c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3z" />
+                        <path stroke-linecap="round" stroke-linejoin="round"
+                            d="M12 22s8-5.333 8-12a8 8 0 10-16 0c0 6.667 8 12 8 12z" />
                     </svg>
+
                     <h2 class="text-xl font-semibold text-gray-800">Dirección de envío</h2>
                 </div>
 

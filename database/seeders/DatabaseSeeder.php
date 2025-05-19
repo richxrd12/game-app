@@ -43,11 +43,11 @@ class DatabaseSeeder extends Seeder
             ]);
         }
 
-        // Asegúrate de que existan antes de crear productos
         $statuses = ProductStatus::pluck('id')->toArray();
 
         $categories = [
             'Nintendo DS',
+            'Wii',
             'Nintendo Switch',
             'PlayStation 4',
             'PlayStation 5',
@@ -59,14 +59,103 @@ class DatabaseSeeder extends Seeder
         ];
 
         foreach ($categories as $name) {
-            Category::create(['name' => $name]);
+            Category::firstOrCreate(['name' => $name]);
         }
 
-        // Crear 10 productos con status aleatorio
-        Product::factory(10)->create()->each(function ($product) use ($statuses) {
-            $product->update([
-                'product_status_id' => fake()->randomElement($statuses),
-            ]);
-        });
+        
+        $products = [
+        [
+            'image' => 'images/games/1.jpg',
+            'name' => 'Super Mario Galaxy',
+            'description' => 'Explora el espacio con Mario en una de sus aventuras más originales.',
+            'price' => 49.99,
+            'product_status_id' => 1,
+            'category_id' => 2,
+        ],
+        [
+            'image' => 'images/games/2.png',
+            'name' => 'The Legend of Zelda: Breath of the Wild',
+            'description' => 'Una épica aventura en un mundo abierto que redefinió la saga.',
+            'price' => 59.99,
+            'is_discounted' => true,
+            'discount' => 10.00,
+            'product_status_id' => 1,
+            'category_id' => 3,
+        ],
+        [
+            'image' => 'images/games/3.jpg',
+            'name' => 'Red Dead Redemption 2',
+            'description' => 'Vive el salvaje oeste como Arthur Morgan en esta obra maestra narrativa.',
+            'price' => 39.99,
+            'product_status_id' => 2,
+            'category_id' => 4,
+        ],
+        [
+            'image' => 'images/games/4.png',
+            'name' => 'Cyberpunk 2077',
+            'description' => 'Sumérgete en Night City como V y descubre un mundo futurista lleno de posibilidades.',
+            'price' => 34.95,
+            'product_status_id' => 2,
+            'category_id' => 7,
+        ],
+        [
+            'image' => 'images/games/5.jpg',
+            'name' => 'Elden Ring',
+            'description' => 'Un nuevo mundo de fantasía oscura creado por Hidetaka Miyazaki y George R. R. Martin.',
+            'price' => 59.95,
+            'is_discounted' => true,
+            'discount' => 15.00,
+            'product_status_id' => 1,
+            'category_id' => 5,
+        ],
+        [
+            'image' => 'images/games/6.jpg',
+            'name' => 'Resident Evil Village',
+            'description' => 'Ethan Winters vuelve a enfrentarse al horror en una aldea maldita.',
+            'price' => 49.90,
+            'product_status_id' => 1,
+            'category_id' => 4,
+        ],
+        [
+            'image' => 'images/games/7.jpg',
+            'name' => 'Minecraft',
+            'description' => 'Explora, construye y sobrevive en un mundo hecho de bloques.',
+            'price' => 26.95,
+            'product_status_id' => 2,
+            'category_id' => 4,
+        ],
+        [
+            'image' => 'images/games/8.jpg',
+            'name' => 'Hollow Knight',
+            'description' => 'Un metroidvania desafiante en un mundo subterráneo de insectos y sombras.',
+            'price' => 14.99,
+            'product_status_id' => 1,
+            'category_id' => 3,
+        ],
+        [
+            'image' => 'images/games/9.jpg',
+            'name' => 'Final Fantasy VII Remake',
+            'description' => 'Revive la historia de Cloud y AVALANCHA con gráficos modernos y combates renovados.',
+            'price' => 44.99,
+            'product_status_id' => 2,
+            'category_id' => 5,
+        ],
+        [
+            'image' => 'images/games/10.jpg',
+            'name' => 'Sekiro: Shadows Die Twice',
+            'description' => 'Domina el arte del shinobi en esta exigente aventura de acción.',
+            'price' => 39.95,
+            'is_discounted' => true,
+            'discount' => 5.00,
+            'product_status_id' => 3,
+            'category_id' => 6,
+        ],
+    ];
+
+        foreach ($products as $data) {
+            Product::create($data);
+        }
+
+
     }
 }

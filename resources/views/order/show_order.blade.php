@@ -42,9 +42,9 @@
                 <div class="my-6">
                     <h2 class="text-lg font-semibold text-gray-700 mb-6">Productos</h2>
                     @foreach($order->products as $product)
-                        <div class="flex justify-between gap-4">
+                        <div class="flex justify-between my-4">
                             <a class="flex gap-2" href="/product/{{ $product->id }}">
-                                <img src="{{ $product->image }}" alt="{{ $product->name }}-image" class="size-8">
+                                <img src="{{ asset($product->image) }}" alt="{{ $product->name }}-image" class="size-8 object-cover">
                                 <p class="font-semibold text-[#5B2AB1]">{{ $product->name }}</p>
                             </a>
                             @if ($product->is_discounted)

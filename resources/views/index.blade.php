@@ -16,7 +16,7 @@
 
         <div id="categories" class="flex flex-wrap justify-center gap-4 my-10 max-w-[70vh] mx-auto">
             <x-category :category="(object) ['name' => 'Todos']" href="/" :selected="request()->is('/')"/>
-            <x-category :category="(object) ['name' => 'Ofertas']" href="/discounted" :selected="request()->is('/discounted')"/>
+            <x-category :category="(object) ['name' => 'Ofertas']" href="/discounted" :selected="request()->is('discounted')"/>
             @foreach ($categories as $category)
                 <x-category :category="$category" href="/category/{{ $category->id }}" :selected="$idCategory == $category->id" />
             @endforeach

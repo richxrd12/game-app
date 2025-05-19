@@ -4,7 +4,7 @@
 
 <a href="/product/{{ $product->id }}" class="transition-all duration-300 ease-in-out transform">
     <div class="bg-[#F9FAFB] rounded-2xl shadow-md overflow-hidden transition-transform hover:scale-105 w-72 p-2">
-        <img src="{{ $product->image }}" alt="{{ $product->name }}" class="w-full h-44 object-cover">
+        <img src="{{ asset($product->image) }}" alt="{{ $product->name }}" class="w-full h-44 object-cover">
         
         <div class="p-4 flex flex-col gap-2">
             <h3 class="text-lg font-semibold text-[#5B2AB1] truncate">
